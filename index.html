@@ -1,223 +1,54 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Script Green</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #061a12; /* Hijau sangat gelap untuk latar belakang */
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .green-border {
-            border: 1px solid #10b981;
-        }
-        .green-gradient {
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-        }
-        .card-bg {
-            background-color: #0b2e23;
-        }
-    </style>
-</head>
-<body class="p-4 pb-24">
+<section class="min-h-screen bg-gradient-to-b from-green-50 to-green-100 flex flex-col items-center justify-center p-6">
+  <div class="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
+    WhatsApp Bot Developer
+  </div>
+  <h1 class="text-4xl font-bold text-gray-800 text-center">
+    Halo, Saya <span class="text-green-600">Rizky Saputra</span>
+  </h1>
+  <p class="mt-6 text-gray-600 text-center max-w-md leading-relaxed">
+    Saya seorang spesialis dalam merakit bot WhatsApp menggunakan Baileys dan Node.js dengan pengalaman 3+ tahun...
+  </p>
+  
+  <div class="mt-8 flex flex-col gap-4 w-full max-w-xs">
+    <button class="bg-green-600 hover:bg-green-700 text-white py-3 rounded-2xl font-semibold transition shadow-lg">
+      Lihat Proyek Bot
+    </button>
+    <button class="border-2 border-green-600 text-green-600 py-3 rounded-2xl font-semibold hover:bg-green-50 transition">
+      Pesan Bot WhatsApp
+    </button>
+  </div>
+</section>
 
-    <div class="green-border rounded-xl p-4 mb-4 flex items-center space-x-4">
-        <div class="w-12 h-12 green-gradient rounded-lg flex items-center justify-center">
-            <i class="fas fa-code text-xl"></i>
-        </div>
-        <div>
-            <h1 class="text-xl font-bold text-emerald-400 leading-none">SC FREE</h1>
-            <p class="text-xs text-emerald-200 mt-1">19 Premium Scripts • Latest Updates</p>
-        </div>
+<section class="bg-white py-12 px-6">
+  <h2 class="text-2xl font-bold text-center text-green-700 mb-8">Apa Kata Klien?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" id="testi-container">
     </div>
+</section>
+const testimonials = [
+  {
+    nama: "Budi Santoso",
+    role: "Owner Olshop",
+    pesan: "Bot buatan Rizky sangat cepat dan membantu admin saya menangani ratusan chat per hari!"
+  },
+  {
+    nama: "Siti Aminah",
+    role: "Digital Marketer",
+    pesan: "Fitur custom-nya luar biasa. Sangat scalable untuk bisnis yang sedang berkembang."
+  }
+];
 
-    <div class="grid grid-cols-3 gap-3 mb-4 text-center">
-        <div class="green-border rounded-xl p-3 bg-emerald-900/20">
-            <p class="text-2xl font-bold text-emerald-400">20</p>
-            <p class="text-[10px] text-emerald-200 uppercase">Total Scripts</p>
-        </div>
-        <div class="green-border rounded-xl p-3 bg-emerald-900/20">
-            <p class="text-2xl font-bold text-emerald-400">6</p>
-            <p class="text-[10px] text-emerald-200 uppercase">New Today</p>
-        </div>
-        <div class="green-border rounded-xl p-3 bg-emerald-900/20">
-            <p class="text-2xl font-bold text-emerald-400">16</p>
-            <p class="text-[10px] text-emerald-200 uppercase">Multi Device</p>
-        </div>
+function renderTestimonials() {
+  const container = document.getElementById('testi-container');
+  if(!container) return;
+
+  container.innerHTML = testimonials.map(t => `
+    <div class="bg-green-50 p-6 rounded-xl border border-green-100 shadow-sm">
+      <p class="italic text-gray-700 mb-4">"${t.pesan}"</p>
+      <div class="font-bold text-green-800">${t.nama}</div>
+      <div class="text-xs text-green-600 uppercase font-semibold">${t.role}</div>
     </div>
+  `).join('');
+}
 
-    <div class="green-border rounded-xl p-4 mb-4">
-        <div class="relative mb-4">
-            <span class="absolute inset-y-0 left-3 flex items-center text-emerald-400">
-                <i class="fas fa-search"></i>
-            </span>
-            <input type="text" placeholder="Search scripts..." class="w-full bg-black/30 border border-emerald-700 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-emerald-400">
-        </div>
-        <div class="flex space-x-2 overflow-x-auto text-xs pb-2">
-            <button class="px-6 py-2 green-gradient rounded-full font-semibold">All</button>
-            <button class="px-6 py-2 bg-emerald-900/40 rounded-full border border-emerald-700">New</button>
-            <button class="px-6 py-2 bg-emerald-900/40 rounded-full border border-emerald-700">MD</button>
-            <button class="px-6 py-2 bg-emerald-900/40 rounded-full border border-emerald-700">Furina</button>
-        </div>
-    </div>
-
-    <div class="green-border rounded-xl p-4 mb-4">
-        <div class="flex items-center space-x-4 mb-4">
-            <div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center">
-                <i class="fas fa-gift text-xl"></i>
-            </div>
-            <div>
-                <h2 class="font-bold text-white uppercase tracking-tight">SC CHANGLI VERSION 1 MULTIDEVIC</h2>
-                <p class="text-[10px] text-emerald-400"><i class="far fa-calendar-alt mr-1"></i> 20-1-2026</p>
-            </div>
-        </div>
-        
-        <p class="text-sm text-gray-300 mb-3 font-mono">Hoshino with AI Features</p>
-        
-        <div class="flex space-x-2 mb-4">
-            <span class="text-[10px] bg-emerald-900 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">MD</span>
-            <span class="text-[10px] bg-emerald-900 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">NEW</span>
-        </div>
-
-        <div class="bg-emerald-950/50 border-l-4 border-emerald-500 p-2 mb-4">
-            <p class="text-[10px] text-emerald-400 font-bold uppercase">Note: MASIH TAHAP UJI COBA</p>
-        </div>
-
-        <div class="flex space-x-2">
-            <button class="flex-grow green-gradient py-3 rounded-lg font-bold flex items-center justify-center space-x-2">
-                <i class="fas fa-download"></i>
-                <span>Download</span>
-            </button>
-            <button class="px-4 bg-emerald-900/40 border border-emerald-700 rounded-lg">
-                <i class="fas fa-info-circle"></i>
-                <p class="text-[8px] uppercase">Info</p>
-            </button>
-        </div>
-    </div>
-
-    <nav class="fixed bottom-0 left-0 right-0 card-bg border-t border-emerald-800 p-3 flex justify-around items-center">
-        <div class="flex flex-col items-center text-emerald-400">
-            <i class="fas fa-home text-xl"></i>
-            <span class="text-[10px] mt-1">Home</span>
-        </div>
-        <div class="flex flex-col items-center text-gray-500">
-            <i class="fas fa-code text-xl"></i>
-            <span class="text-[10px] mt-1">Scripts</span>
-        </div>
-        <div class="flex flex-col items-center text-gray-500">
-            <i class="fas fa-search text-xl"></i>
-            <span class="text-[10px] mt-1">Search</span>
-        </div>
-        <div class="flex flex-col items-center text-gray-500">
-            <i class="fas fa-heart text-xl"></i>
-            <span class="text-[10px] mt-1">Support</span>
-        <div onclick="openGame()" class="flex flex-col items-center text-gray-500 cursor-pointer active:text-emerald-400">
-    <i class="fas fa-gamepad text-xl"></i> <span class="text-[10px] mt-1">Support</span>
-        </div>
-    </nav>
-<div id="gameModal" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col items-center justify-center p-4">
-    <div class="bg-emerald-900 border-2 border-emerald-400 p-4 rounded-2xl w-full max-w-sm relative">
-        <button onclick="closeGame()" class="absolute -top-10 right-0 text-white text-3xl">&times;</button>
-        
-        <div class="text-center mb-4">
-            <h2 class="text-xl font-bold text-emerald-400">Mini Snake Game</h2>
-            <p class="text-xs text-emerald-200">Gunakan tombol di bawah untuk bermain</p>
-        </div>
-
-        <canvas id="snakeGame" width="300" height="300" class="bg-black mx-auto border border-emerald-500 rounded-lg shadow-lg shadow-emerald-500/20"></canvas>
-
-        <div class="grid grid-cols-3 gap-2 mt-6 max-w-[150px] mx-auto">
-            <div class=""></div>
-            <button onclick="changeDir('up')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-up"></i></button>
-            <div class=""></div>
-            <button onclick="changeDir('left')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-left"></i></button>
-            <button onclick="changeDir('down')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-down"></i></button>
-            <button onclick="changeDir('right')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        
-        <button onclick="startGame()" id="startBtn" class="w-full mt-4 py-2 green-gradient rounded-lg font-bold">MULAI GAME</button>
-    </div>
-</div>
-
-<script>
-    const canvas = document.getElementById("snakeGame");
-    const ctx = canvas.getContext("2d");
-    let box = 20;
-    let snake, food, direction, gameInterval;
-
-    function openGame() {
-        document.getElementById("gameModal").classList.remove("hidden");
-    }
-
-    function closeGame() {
-        document.getElementById("gameModal").classList.add("hidden");
-        clearInterval(gameInterval);
-    }
-
-    function startGame() {
-        snake = [{ x: 9 * box, y: 10 * box }];
-        food = { x: Math.floor(Math.random() * 14 + 1) * box, y: Math.floor(Math.random() * 14 + 1) * box };
-        direction = "right";
-        document.getElementById("startBtn").innerText = "RESET GAME";
-        
-        if(gameInterval) clearInterval(gameInterval);
-        gameInterval = setInterval(draw, 150);
-    }
-
-    function changeDir(dir) {
-        if(dir === "up" && direction !== "down") direction = "up";
-        if(dir === "down" && direction !== "up") direction = "down";
-        if(dir === "left" && direction !== "right") direction = "left";
-        if(dir === "right" && direction !== "left") direction = "right";
-    }
-
-    function draw() {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < snake.length; i++) {
-            ctx.fillStyle = i === 0 ? "#10b981" : "#059669";
-            ctx.fillRect(snake[i].x, snake[i].y, box, box);
-        }
-
-        ctx.fillStyle = "red";
-        ctx.fillRect(food.x, food.y, box, box);
-
-        let snakeX = snake[0].x;
-        let snakeY = snake[0].y;
-
-        if (direction === "up") snakeY -= box;
-        if (direction === "down") snakeY += box;
-        if (direction === "left") snakeX -= box;
-        if (direction === "right") snakeX += box;
-
-        if (snakeX === food.x && snakeY === food.y) {
-            food = { x: Math.floor(Math.random() * 14 + 1) * box, y: Math.floor(Math.random() * 14 + 1) * box };
-        } else {
-            snake.pop();
-        }
-
-        let newHead = { x: snakeX, y: snakeY };
-
-        // Game Over Logic
-        if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
-            clearInterval(gameInterval);
-            alert("Game Over!");
-        }
-
-        snake.unshift(newHead);
-    }
-
-    function collision(head, array) {
-        for (let i = 0; i < array.length; i++) {
-            if (head.x === array[i].x && head.y === array[i].y) return true;
-        }
-        return false;
-    }
-            </script>
-</body>
-    </html>
+// Jalankan fungsi saat halaman dimuat
+document.addEventListener('DOMContentLoaded', renderTestimonials);
