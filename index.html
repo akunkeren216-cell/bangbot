@@ -115,8 +115,109 @@
         <div class="flex flex-col items-center text-gray-500">
             <i class="fas fa-heart text-xl"></i>
             <span class="text-[10px] mt-1">Support</span>
+        <div onclick="openGame()" class="flex flex-col items-center text-gray-500 cursor-pointer active:text-emerald-400">
+    <i class="fas fa-gamepad text-xl"></i> <span class="text-[10px] mt-1">Support</span>
         </div>
     </nav>
+<div id="gameModal" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col items-center justify-center p-4">
+    <div class="bg-emerald-900 border-2 border-emerald-400 p-4 rounded-2xl w-full max-w-sm relative">
+        <button onclick="closeGame()" class="absolute -top-10 right-0 text-white text-3xl">&times;</button>
+        
+        <div class="text-center mb-4">
+            <h2 class="text-xl font-bold text-emerald-400">Mini Snake Game</h2>
+            <p class="text-xs text-emerald-200">Gunakan tombol di bawah untuk bermain</p>
+        </div>
 
+        <canvas id="snakeGame" width="300" height="300" class="bg-black mx-auto border border-emerald-500 rounded-lg shadow-lg shadow-emerald-500/20"></canvas>
+
+        <div class="grid grid-cols-3 gap-2 mt-6 max-w-[150px] mx-auto">
+            <div class=""></div>
+            <button onclick="changeDir('up')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-up"></i></button>
+            <div class=""></div>
+            <button onclick="changeDir('left')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-left"></i></button>
+            <button onclick="changeDir('down')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-down"></i></button>
+            <button onclick="changeDir('right')" class="bg-emerald-700 p-3 rounded-lg"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <button onclick="startGame()" id="startBtn" class="w-full mt-4 py-2 green-gradient rounded-lg font-bold">MULAI GAME</button>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById("snakeGame");
+    const ctx = canvas.getContext("2d");
+    let box = 20;
+    let snake, food, direction, gameInterval;
+
+    function openGame() {
+        document.getElementById("gameModal").classList.remove("hidden");
+    }
+
+    function closeGame() {
+        document.getElementById("gameModal").classList.add("hidden");
+        clearInterval(gameInterval);
+    }
+
+    function startGame() {
+        snake = [{ x: 9 * box, y: 10 * box }];
+        food = { x: Math.floor(Math.random() * 14 + 1) * box, y: Math.floor(Math.random() * 14 + 1) * box };
+        direction = "right";
+        document.getElementById("startBtn").innerText = "RESET GAME";
+        
+        if(gameInterval) clearInterval(gameInterval);
+        gameInterval = setInterval(draw, 150);
+    }
+
+    function changeDir(dir) {
+        if(dir === "up" && direction !== "down") direction = "up";
+        if(dir === "down" && direction !== "up") direction = "down";
+        if(dir === "left" && direction !== "right") direction = "left";
+        if(dir === "right" && direction !== "left") direction = "right";
+    }
+
+    function draw() {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < snake.length; i++) {
+            ctx.fillStyle = i === 0 ? "#10b981" : "#059669";
+            ctx.fillRect(snake[i].x, snake[i].y, box, box);
+        }
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(food.x, food.y, box, box);
+
+        let snakeX = snake[0].x;
+        let snakeY = snake[0].y;
+
+        if (direction === "up") snakeY -= box;
+        if (direction === "down") snakeY += box;
+        if (direction === "left") snakeX -= box;
+        if (direction === "right") snakeX += box;
+
+        if (snakeX === food.x && snakeY === food.y) {
+            food = { x: Math.floor(Math.random() * 14 + 1) * box, y: Math.floor(Math.random() * 14 + 1) * box };
+        } else {
+            snake.pop();
+        }
+
+        let newHead = { x: snakeX, y: snakeY };
+
+        // Game Over Logic
+        if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
+            clearInterval(gameInterval);
+            alert("Game Over!");
+        }
+
+        snake.unshift(newHead);
+    }
+
+    function collision(head, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (head.x === array[i].x && head.y === array[i].y) return true;
+        }
+        return false;
+    }
+            </script>
 </body>
     </html>
