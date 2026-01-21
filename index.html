@@ -1,54 +1,98 @@
-<section class="min-h-screen bg-gradient-to-b from-green-50 to-green-100 flex flex-col items-center justify-center p-6">
-  <div class="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
-    WhatsApp Bot Developer
-  </div>
-  <h1 class="text-4xl font-bold text-gray-800 text-center">
-    Halo, Saya <span class="text-green-600">Rizky Saputra</span>
-  </h1>
-  <p class="mt-6 text-gray-600 text-center max-w-md leading-relaxed">
-    Saya seorang spesialis dalam merakit bot WhatsApp menggunakan Baileys dan Node.js dengan pengalaman 3+ tahun...
-  </p>
-  
-  <div class="mt-8 flex flex-col gap-4 w-full max-w-xs">
-    <button class="bg-green-600 hover:bg-green-700 text-white py-3 rounded-2xl font-semibold transition shadow-lg">
-      Lihat Proyek Bot
-    </button>
-    <button class="border-2 border-green-600 text-green-600 py-3 rounded-2xl font-semibold hover:bg-green-50 transition">
-      Pesan Bot WhatsApp
-    </button>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RizkyS - WhatsApp Bot Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #f0fdf4; } /* Warna hijau sangat muda */
+    </style>
+</head>
+<body class="text-gray-800 font-sans">
 
-<section class="bg-white py-12 px-6">
-  <h2 class="text-2xl font-bold text-center text-green-700 mb-8">Apa Kata Klien?</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" id="testi-container">
-    </div>
-</section>
-const testimonials = [
-  {
-    nama: "Budi Santoso",
-    role: "Owner Olshop",
-    pesan: "Bot buatan Rizky sangat cepat dan membantu admin saya menangani ratusan chat per hari!"
-  },
-  {
-    nama: "Siti Aminah",
-    role: "Digital Marketer",
-    pesan: "Fitur custom-nya luar biasa. Sangat scalable untuk bisnis yang sedang berkembang."
-  }
-];
+    <nav class="flex justify-between items-center p-6 bg-white shadow-sm sticky top-0 z-50">
+        <div class="text-2xl font-bold text-green-600">RizkyS</div>
+        <button class="text-2xl text-gray-700"><i class="fas fa-bars"></i></button>
+    </nav>
 
-function renderTestimonials() {
-  const container = document.getElementById('testi-container');
-  if(!container) return;
+    <section class="flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-b from-green-50 to-white">
+        <span class="bg-green-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide mb-6 uppercase">
+            WhatsApp Bot Developer
+        </span>
+        <h1 class="text-4xl font-extrabold mb-4 leading-tight">
+            Halo, Saya <br> <span class="text-green-600">Rizky Saputra</span>
+        </h1>
+        <p class="text-gray-600 max-w-md mx-auto mb-8 leading-relaxed">
+            Saya seorang spesialis dalam merakit bot WhatsApp menggunakan **Baileys** dan **Node.js** dengan pengalaman 3+ tahun. Membuat sistem otomatis yang efisien dan scalable.
+        </p>
+        
+        <div class="flex flex-col gap-4 w-full max-w-xs mx-auto">
+            <a href="#" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-2xl transition shadow-lg shadow-green-200 text-center">
+                Lihat Proyek Bot
+            </a>
+            <a href="#" class="border-2 border-green-600 text-green-700 font-bold py-3 rounded-2xl hover:bg-green-50 transition text-center">
+                Pesan Bot WhatsApp
+            </a>
+        </div>
+    </section>
 
-  container.innerHTML = testimonials.map(t => `
-    <div class="bg-green-50 p-6 rounded-xl border border-green-100 shadow-sm">
-      <p class="italic text-gray-700 mb-4">"${t.pesan}"</p>
-      <div class="font-bold text-green-800">${t.nama}</div>
-      <div class="text-xs text-green-600 uppercase font-semibold">${t.role}</div>
-    </div>
-  `).join('');
-}
+    <section class="py-16 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-green-800 mb-10">Testimoni Klien</h2>
+            
+            <div id="testimonial-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </div>
+        </div>
+    </section>
 
-// Jalankan fungsi saat halaman dimuat
-document.addEventListener('DOMContentLoaded', renderTestimonials);
+    <a href="#" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <footer class="py-8 text-center text-gray-500 text-sm border-t border-green-100 bg-green-50">
+        &copy; 2026 Rizky Saputra. Powered by Node.js & Baileys.
+    </footer>
+
+    <script>
+        const dataTestimoni = [
+            {
+                nama: "Andi Wijaya",
+                peran: "Owner Toko Online",
+                teks: "Botnya sangat stabil! Sekarang admin saya tidak perlu balas manual satu per satu lagi."
+            },
+            {
+                nama: "Santi Putri",
+                peran: "Digital Marketer",
+                teks: "Fitur custom Baileys-nya mantap, proses integrasi ke database sangat lancar."
+            },
+            {
+                nama: "Budi Pratama",
+                peran: "Startup Founder",
+                teks: "Sangat scalable. Digunakan ribuan user tiap hari tetap ringan. Recommended!"
+            }
+        ];
+
+        const container = document.getElementById('testimonial-list');
+
+        dataTestimoni.forEach(item => {
+            const card = `
+                <div class="bg-green-50 p-6 rounded-2xl border border-green-100 hover:shadow-md transition">
+                    <p class="text-gray-700 italic mb-4">"${item.teks}"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center text-green-700 font-bold">
+                            ${item.nama.charAt(0)}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-900 text-sm">${item.nama}</h4>
+                            <p class="text-xs text-green-600">${item.peran}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+    </script>
+</body>
+</html>
