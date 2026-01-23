@@ -111,8 +111,7 @@
             `;
             container.innerHTML += card;
         });
-    </script>
-        const menuBtn = document.getElementById('menu-btn');
+    </script>const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -128,7 +127,6 @@ closeBtn.addEventListener('click', () => {
     document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
 });
 
-// Menutup menu otomatis saat salah satu link diklik
 const menuLinks = mobileMenu.querySelectorAll('a');
 menuLinks.forEach(link => {
     link.addEventListener('click', () => {
