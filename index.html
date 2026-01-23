@@ -74,6 +74,30 @@
     </footer>
 
     <script>
+        const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+// Fungsi membuka menu
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden'); // Menghapus class hidden untuk muncul
+    document.body.style.overflow = 'hidden'; // Agar layar belakang tidak bisa di-scroll
+});
+
+// Fungsi menutup menu
+closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden'); // Menambah class hidden untuk sembunyi
+    document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
+});
+
+// Menutup menu otomatis saat salah satu link diklik
+const menuLinks = mobileMenu.querySelectorAll('a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+});
         const dataTestimoni = [
             {
                 nama: "Cahaya jebe",
@@ -111,28 +135,6 @@
             `;
             container.innerHTML += card;
         });
-    </script>const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-// Fungsi membuka menu
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden'); // Menghapus class hidden untuk muncul
-    document.body.style.overflow = 'hidden'; // Agar layar belakang tidak bisa di-scroll
-});
-
-// Fungsi menutup menu
-closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden'); // Menambah class hidden untuk sembunyi
-    document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
-});
-
-const menuLinks = mobileMenu.querySelectorAll('a');
-menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    });
-});
+    </script>
 </body>
 </html>
