@@ -3,138 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mas r - MAS R GRUP</title>
+    <title>Mas r - Rekber & Bot Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #f0fdf4; } /* Warna hijau sangat muda */
+        /* Mencegah pergeseran konten saat menu dibuka */
+        body { overflow-x: hidden; }
     </style>
 </head>
-<body class="text-gray-800 font-sans">
+<body class="bg-[#f0fdf4] text-gray-800">
 
     <nav class="flex justify-between items-center p-6 bg-white shadow-sm sticky top-0 z-50">
         <div class="text-2xl font-bold text-green-600">Mas r</div>
-        <button class="text-2xl text-gray-700"><i class="fas fa-bars"></i></button>
-    <nav class="flex justify-between items-center p-6 bg-white shadow-sm sticky top-0 z-50">
-    <div class="text-2xl font-bold text-green-600">Mas r</div>
-    
-    <button id="menu-btn" class="text-2xl text-gray-700 focus:outline-none">
-        <i class="fas fa-bars"></i>
-    </button>
-</nav>
+        <button id="menu-btn" class="text-2xl text-gray-700">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
 
-<div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 text-xl font-bold text-green-800">
-    <button id="close-btn" class="absolute top-6 right-6 text-3xl">
-        <i class="fas fa-times"></i>
-    </button>
-    
-    <a href="#" class="hover:text-green-500">Beranda</a>
-    <a href="#testimoni" class="hover:text-green-500">Testimoni</a>
-    <a href="https://wa.me/nomorkamu" class="hover:text-green-500">Hubungi Saya</a>
-    <div class="text-sm font-normal text-gray-400 mt-10">© 2026 MAS R GRUP</div>
-</div>
-    
-    <section class="flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-b from-green-50 to-white">
-        <span class="bg-green-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide mb-6 uppercase">
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 hidden z-[60] transition-opacity duration-300 opacity-0"></div>
+    <div id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-[70] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl p-6">
+        <div class="flex justify-between items-center mb-8">
+            <span class="text-xl font-bold text-green-600">Menu</span>
+            <button id="close-btn" class="text-2xl text-gray-400">&times;</button>
+        </div>
+        <div class="flex flex-col gap-6 font-semibold text-gray-700">
+            <a href="#" class="hover:text-green-600">Beranda</a>
+            <a href="#testimoni-section" class="hover:text-green-600">Testimoni</a>
+            <a href="https://wa.me/nomorkamu" class="hover:text-green-600">Kontak WA</a>
+        </div>
+    </div>
+
+    <section class="flex flex-col items-center justify-center text-center px-6 py-12">
+        <span class="bg-green-500 text-white px-5 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
             MAS R
         </span>
+
         <h1 class="text-4xl font-extrabold mb-4 leading-tight">
-            Halo, Saya <br> <span class="text-green-600">Mas r</span>
+            Halo, Saya <br> <span class="text-green-600 uppercase">Mas r</span>
         </h1>
-        <p class="text-gray-600 max-w-md mx-auto mb-8 leading-relaxed">
-            Saya seorang spesialis dalam rekber atau mm,bt,trade,tt saya juga open 24 jam dengan fee yang murah.
+
+        <p class="text-gray-600 max-w-sm mx-auto mb-10 leading-relaxed">
+            Saya seorang spesialis dalam rekber atau mm, bt, trade, tt saya juga open 24 jam dengan fee yang murah.
         </p>
         
         <div class="flex flex-col gap-4 w-full max-w-xs mx-auto">
-    <a href="https://whatsapp.com/channel/0029VbBl9pl3bbVATspE2K0h" target="_blank" class="bg-green-700 hover:bg-green-800 text-white font-bold py-4 rounded-2xl transition shadow-xl shadow-green-200 text-center uppercase flex items-center justify-center gap-2">
-        <i class="fas fa-comments"></i> Testimoni
-    </a>
-
-    <a href="https://wa.me/6283196010848" target="_blank" class="bg-white border-2 border-green-600 text-green-700 font-bold py-4 rounded-2xl hover:bg-green-50 transition text-center uppercase flex items-center justify-center gap-2">
-        <i class="fas fa-handshake"></i> Rekber Sekarang
-    </a>
+            <a href="#testimoni-section" class="bg-green-800 hover:bg-green-900 text-white font-bold py-4 rounded-2xl transition flex items-center justify-center gap-2 shadow-lg">
+                <i class="fas fa-comments"></i> TESTIMONI
+            </a>
+            <a href="https://wa.me/nomorkamu" class="border-2 border-green-600 text-green-700 font-bold py-4 rounded-2xl hover:bg-green-50 transition flex items-center justify-center gap-2">
+                <i class="fas fa-handshake"></i> REKBER SEKARANG
+            </a>
         </div>
     </section>
 
-    <section class="py-16 px-6 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-center text-green-800 mb-10">Testimoni Klien</h2>
-            
-            <div id="testimonial-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                </div>
-        </div>
+    <section id="testimoni-section" class="py-12 px-6">
+        <h2 class="text-2xl font-bold text-center text-green-800 mb-8">Testimoni Klien</h2>
+        <div id="testi-list" class="grid grid-cols-1 gap-4 max-w-md mx-auto">
+            </div>
     </section>
 
-    <a href="#" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition z-50">
+    <a href="https://wa.me/nomorkamu" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-40 hover:scale-110 transition-transform">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
-    <footer class="py-8 text-center text-gray-500 text-sm border-t border-green-100 bg-green-50">
-        &copy; 2026 MAS R GRUP
-    </footer>
-
     <script>
+        // Logika Menu Geser
         const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
-const mobileMenu = document.getElementById('mobile-menu');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
 
-// Fungsi membuka menu
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden'); // Menghapus class hidden untuk muncul
-    document.body.style.overflow = 'hidden'; // Agar layar belakang tidak bisa di-scroll
-});
-
-// Fungsi menutup menu
-closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden'); // Menambah class hidden untuk sembunyi
-    document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
-});
-
-// Menutup menu otomatis saat salah satu link diklik
-const menuLinks = mobileMenu.querySelectorAll('a');
-menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    });
-});
-        <script>
-        const dataTestimoni = [
-            {
-                nama: "Cahaya jebe",
-                peran: "Owner Toko Online",
-                teks: "Pelayanan cepat,fee nya juga murah"
-            },
-            {
-                nama: "San Store",
-                peran: "jebe fish it",
-                teks: "gak sia sia menggunakan rekber di sini, pelayanan cepet dan ramah."
-            },
-            {
-                nama: "Budi Pratama",
-                peran: "jebe roblox",
-                teks: "keren sekali mas r, grup jebe nya juga banyak!"
+        function toggleMenu(isOpen) {
+            if (isOpen) {
+                mobileMenu.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('-translate-x-full');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 300);
             }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMenu(true));
+        closeBtn.addEventListener('click', () => toggleMenu(false));
+        overlay.addEventListener('click', () => toggleMenu(false));
+
+        // Data Testimoni
+        const testimonials = [
+            { nama: "Santi Putri", role: "Digital Marketer", teks: "Fitur custom Baileys-nya mantap, proses integrasi ke database sangat lancar." },
+            { nama: "Budi Pratama", role: "Startup Founder", teks: "Sangat scalable. Digunakan ribuan user tiap hari tetap ringan. Recommended!" }
         ];
 
-        const container = document.getElementById('testimonial-list');
-
-        dataTestimoni.forEach(item => {
-            const card = `
-                <div class="bg-green-50 p-6 rounded-2xl border border-green-100 hover:shadow-md transition">
-                    <p class="text-gray-700 italic mb-4">"${item.teks}"</p>
+        const testiContainer = document.getElementById('testi-list');
+        testimonials.forEach(t => {
+            testiContainer.innerHTML += `
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100">
+                    <p class="italic text-gray-600 mb-4">"${t.teks}"</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center text-green-700 font-bold">
-                            ${item.nama.charAt(0)}
-                        </div>
+                        <div class="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center font-bold text-green-700">${t.nama[0]}</div>
                         <div>
-                            <h4 class="font-bold text-green-900 text-sm">${item.nama}</h4>
-                            <p class="text-xs text-green-600">${item.peran}</p>
+                            <div class="font-bold text-sm">${t.nama}</div>
+                            <div class="text-xs text-green-600">${t.role}</div>
                         </div>
                     </div>
                 </div>
             `;
-            container.innerHTML += card;
         });
     </script>
 </body>
